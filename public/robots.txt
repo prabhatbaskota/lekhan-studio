@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lekhan-studio-app-cja3grfaa3c5gggb.germanywestcentral-01.azurewebsites.net/sitemap.xml

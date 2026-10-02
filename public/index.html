@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="5yKIKxLNgS1HFTyDgi25Iqyu2t6boJ8SJOrzkVTVra8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free Nepali Unicode typing and converter. Type phonetically in Roman letters and get clean Devanagari instantly, plus Nepali text-to-speech narration.">
+<meta name="keywords" content="nepali typing, unicode nepali converter, nepali unicode typing, romanized nepali to unicode, type nepali online, nepali keyboard online, nepali text to speech, nepali tts">
+<title>Nepali Unicode Typing & Converter Online | लेखन Studio</title>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="लेखन Studio | Nepali Unicode Typing & Converter">
+<meta property="og:description" content="Free online Nepali Unicode typing tool with text-to-speech narration. Type phonetically in Roman letters and get clean Devanagari Unicode instantly.">
+<meta property="og:image" content="https://lekhan-studio-app-cja3grfaa3c5gggb.germanywestcentral-01.azurewebsites.net/logo.png">
+<meta property="og:url" content="https://lekhan-studio-app-cja3grfaa3c5gggb.germanywestcentral-01.azurewebsites.net/">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "लेखन Studio",
+  "alternateName": "Lekhan Studio Nepali Unicode Typing",
+  "description": "Free online Nepali Unicode typing and converter tool. Type phonetically in Roman letters and get clean Devanagari Unicode instantly.",
+  "applicationCategory": "Utility",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I type Nepali online without a Nepali keyboard?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You don't need a Nepali keyboard installed. Just type a word phonetically in Roman letters (e.g. 'namaste') and it converts to Devanagari (नमस्ते) automatically when you hit space or punctuation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this a Preeti to Unicode converter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not currently. लेखन Studio converts phonetic Roman typing directly to Unicode Devanagari. A Preeti font converter mode is planned but not yet available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this work as a Nepali Unicode font converter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "लेखन Studio outputs standard Unicode Devanagari text, which displays correctly everywhere without needing any special Nepali font installed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert Nepali text to speech (audio)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. लेखन Studio includes Nepali text-to-speech narration with both male and female voice options. Type your Nepali text, click Listen to hear it read aloud, and download the audio if you want to keep it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this Nepali Unicode converter free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, लेखन Studio is completely free to use, with no sign-up required."
+      }
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Mukta:wght@300;400;500;600;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16241D;
+    --ink-soft:#1D2E24;
+    --paper:#F5EEDD;
+    --paper-line:#E3D4AE;
+    --paper-shadow:#c9b98c;
+    --gold:#C1622D;
+    --gold-deep:#9C4C1F;
+    --maroon:#2F6F5E;
+    --text-on-paper:#2A2117;
+    --muted:#9DB0A2;
+    --muted-soft:#7E9184;
+    --cream:#F0EBDD;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, #24352A 0%, transparent 60%),
+      var(--ink);
+    color:var(--cream);
+    font-family:'Mukta',sans-serif;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  header{
+    padding:22px 28px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width:920px;
+    margin:0 auto;
+    width:100%;
+    border-bottom:1px solid #26382C;
+  }
+  .brand{display:flex;align-items:baseline;gap:10px;}
+  .brand-text{font-family:'Fraunces',serif;font-size:23px;letter-spacing:0.2px;position:relative;margin:0;font-weight:400;}
+  .brand-text b{font-weight:600;color:var(--gold);}
+  .brand-text b::after{
+    content:"";display:block;height:2px;width:60%;margin-top:2px;
+    background:var(--gold);opacity:.55;border-radius:2px;
+  }
+  .brand-text b{font-weight:600;}
+  .brand-sub{font-size:12px;color:var(--muted);margin-top:1px;}
+  .header-actions{display:flex;gap:8px;}
+  .theme-toggle{
+    background:transparent;border:1px solid #3a3226;color:var(--muted);
+    font-size:15px;width:34px;height:34px;border-radius:50%;
+    cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;
+  }
+  .theme-toggle:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* Light mode: flips the app chrome (header/guide/toolbar/footer) to a
+     light background. The writing surface (--paper) stays as-is either
+     way, since it's meant to look like a physical page regardless of theme. */
+  body[data-theme="light"]{
+    --ink:#F3EEE1;
+    --ink-soft:#E9E1CE;
+    --cream:#2A2117;
+    --muted:#6E7A6E;
+    --muted-soft:#8A8272;
+  }
+  body[data-theme="light"] .page-wrap::before,
+  body[data-theme="light"] .page-wrap::after{ opacity:.35; }
+  .guide-toggle{
+    background:transparent;border:1px solid #3a3226;color:var(--muted);
+    font-family:'Mukta';font-size:13px;padding:8px 14px;border-radius:20px;
+    cursor:pointer;transition:.15s;
+  }
+  .guide-toggle:hover{border-color:var(--gold);color:var(--gold);}
+
+  main{max-width:920px;margin:18px auto 40px;padding:0 28px;width:100%;flex:1;}
+
+  .tabs{display:flex;gap:8px;margin-bottom:14px;}
+  .tab{
+    font-size:13px;padding:7px 14px;border-radius:8px 8px 0 0;
+    color:var(--muted);cursor:default;border:1px solid transparent;
+  }
+  .tab.active{background:var(--paper);color:var(--ink);font-weight:600;border-color:var(--paper);}
+  .tab.disabled{cursor:not-allowed;opacity:.55;}
+  .tab.disabled .pill{
+    font-size:10px;background:#3a3226;color:var(--muted);padding:2px 7px;
+    border-radius:10px;margin-left:6px;
+  }
+
+  .page-wrap{position:relative;}
+  .page-wrap::before, .page-wrap::after{
+    content:"";position:absolute;left:14px;right:14px;
+    background:var(--paper-shadow);border-radius:14px;z-index:0;
+  }
+  .page-wrap::before{ top:14px; bottom:-8px; opacity:.55; }
+  .page-wrap::after{ top:24px; bottom:-16px; opacity:.30; }
+
+  .page{
+    position:relative;z-index:1;
+    background:var(--paper);
+    border-radius:14px;
+    padding:34px 38px 20px;
+    box-shadow:0 18px 40px rgba(0,0,0,0.35);
+  }
+
+  #editor{
+    width:100%;
+    min-height:44vh;
+    border:none;
+    outline:none;
+    resize:vertical;
+    background:transparent;
+    color:var(--text-on-paper);
+    font-family:'Kalam','Mukta',cursive;
+    font-weight:400;
+    --line-h:2.3em;
+    font-size:24px;
+    line-height:var(--line-h);
+    background-image:repeating-linear-gradient(
+      to bottom, transparent, transparent calc(var(--line-h) - 1px), var(--paper-line) calc(var(--line-h) - 1px), var(--paper-line) var(--line-h)
+    );
+    padding-top:2px;
+  }
+  #editor::placeholder{color:var(--muted-soft);opacity:.75;}
+
+  .page-footer{
+    display:flex;justify-content:space-between;align-items:center;
+    border-top:1px dashed var(--paper-line);
+    margin-top:10px;padding-top:12px;
+    font-size:12.5px;color:var(--muted-soft);
+  }
+  .stat-group{display:flex;gap:18px;flex-wrap:wrap;}
+  .stat b{color:var(--text-on-paper);font-weight:600;}
+
+  .toolbar{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:14px;flex-wrap:wrap;gap:10px;
+  }
+  .draft-note{font-size:12px;color:var(--muted);}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Mukta';font-size:13.5px;font-weight:500;
+    padding:9px 16px;border-radius:9px;border:1px solid #3a3226;
+    background:transparent;color:var(--cream);cursor:pointer;transition:.15s;
+  }
+  .btn:hover{border-color:var(--gold);color:var(--gold);}
+  .btn.primary{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:600;}
+  .btn.primary:hover{background:var(--gold-deep);color:var(--ink);}
+
+  /* Typing guide drawer */
+  .guide{
+    max-width:920px;margin:0 auto 26px;padding:0 28px;
+    overflow:hidden;max-height:0;transition:max-height .28s ease;
+  }
+  .guide.open{max-height:80vh;overflow-y:auto;}
+  .guide-inner{
+    background:var(--ink-soft);border:1px solid #34291c;border-radius:12px;
+    padding:20px 22px;font-size:13.5px;color:#d8cdb4;
+  }
+  .guide-inner h4{margin:0 0 8px;color:var(--gold);font-size:13px;letter-spacing:.03em;text-transform:uppercase;}
+  .guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:10px;}
+  .guide-grid code{background:#141110;color:var(--gold);padding:1px 6px;border-radius:5px;font-family:monospace;}
+  .guide p{margin:6px 0;line-height:1.55;}
+  .guide-example{color:var(--muted);font-size:12.5px;}
+
+  footer{text-align:center;color:var(--muted-soft);font-size:11.5px;padding:18px 0 26px;}
+  .footer-brand{display:flex;align-items:center;justify-content:center;gap:7px;}
+  .footer-logo{height:28px;width:auto;opacity:.9;vertical-align:middle;}
+
+  .tricky-strip{margin-bottom:16px;}
+  .tricky-label{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;}
+  .tricky-chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .tricky-chip{
+    display:flex;align-items:baseline;gap:7px;
+    background:var(--ink-soft);border:1px solid #34291c;border-radius:8px;
+    padding:6px 11px;font-size:13px;white-space:nowrap;
+  }
+  .tricky-chip .dev{color:var(--gold);font-weight:600;font-size:14.5px;}
+  .tricky-chip .rom{color:var(--muted);font-family:monospace;font-size:12px;}
+
+  @media (max-width:640px){
+    header{padding:18px 18px 6px;flex-wrap:wrap;gap:10px;}
+    .header-actions{flex-wrap:wrap;}
+    main{padding:0 14px;}
+    .page{padding:22px 18px 16px;}
+    #editor{font-size:21px;--line-h:2.15em;}
+    .brand-text{font-size:18px;}
+    .btn{padding:9px 13px;font-size:12.5px;}
+  }
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CFHQ56RQDY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CFHQ56RQDY');
+</script>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div>
+      <h1 class="brand-text"><b>लेखन</b> Studio</h1>
+      <div class="brand-sub">Free Nepali Unicode typing &amp; converter to write clean Nepali online</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggleBtn" title="Toggle dark/light mode">🌙</button>
+    <button class="guide-toggle" onclick="toggleGuide()">Typing guide</button>
+    <button class="guide-toggle" onclick="toggleFeedback()">Report an issue</button>
+  </div>
+</header>
+
+<div class="guide" id="feedback">
+  <div class="guide-inner">
+    <h4>Report a wrong word or issue</h4>
+    <p style="margin-bottom:12px;">Found a word that converted wrong, or something that felt broken? A line or two is plenty.</p>
+    <textarea id="feedbackText" rows="3" placeholder="e.g. typed 'sharma' expecting शर्मा but got शर्म..." style="width:100%;background:#141110;border:1px solid #34291c;border-radius:8px;color:var(--cream);padding:10px;font-family:'Mukta';font-size:13.5px;resize:vertical;"></textarea>
+    <label style="display:flex;align-items:center;gap:7px;margin:10px 0;font-size:12.5px;color:var(--muted);">
+      <input type="checkbox" id="includeSnippet" checked>
+      Include the last bit of what I was writing, for context
+    </label>
+    <button class="btn primary" onclick="sendFeedback()" style="font-size:13px;">Send report</button>
+  </div>
+</div>
+
+<div class="guide" id="guide">
+  <div class="guide-inner">
+    <h4>How the typing works</h4>
+    <p>Type in lowercase roman letters at word-end (space, punctuation, enter), and the word converts to Devanagari automatically. Long vowels double up: <code>aa</code>, <code>ii</code>/<code>ee</code>, <code>uu</code>/<code>oo</code>.</p>
+    <p>Devanagari has no letter case, so this tool borrows CAPITALS for sounds English spelling can't tell apart. Don't capitalize names or sentence starts out of habit. Only use capitals for the sounds below.</p>
+    <div class="guide-grid">
+      <div>
+        <b>Retroflex vs dental</b>
+        <p class="guide-example"><code>T D N</code> → ट ड ण &nbsp; vs &nbsp; <code>t d n</code> → त द न</p>
+      </div>
+      <div>
+        <b>Sibilants</b>
+        <p class="guide-example"><code>S</code> → ष &nbsp; <code>sh</code> → श &nbsp; <code>s</code> → स</p>
+      </div>
+      <div>
+        <b>Vocalic R (ऋ)</b>
+        <p class="guide-example">Natural spelling usually just works for common words: <code>rishi</code> → ऋषि, <code>kripayaa</code> → कृपया. For anything else, capital <code>R</code> alone (no extra <code>i</code>) gives the ऋ sound directly: <code>RSi</code> → ऋषि.</p>
+      </div>
+      <div>
+        <b>Anusvara / Visarga</b>
+        <p class="guide-example"><code>*</code> → ं &nbsp; <code>**</code> → ँ &nbsp; e.g. <code>s*saar</code> → संसार<br>(<code>M</code> / <code>H</code> / <code>~</code> still work too)</p>
+      </div>
+      <div>
+        <b>Formal vs informal names</b>
+        <p class="guide-example">Capitals control which spelling you get: <code>ganesh</code>→गनेश, <code>gaNesh</code>→गणेश (canonical)</p>
+      </div>
+      <div>
+        <b>Two consonants wrongly joining</b>
+        <p class="guide-example">By default, back-to-back consonants conjunct: <code>raajkumaar</code> → राज्कुमार (wrong). Type the vowel between them instead: <code>raajakumaar</code> → राजकुमार ✓</p>
+      </div>
+      <div>
+        <b>A truly "dead" consonant</b>
+        <p class="guide-example">For the rarer case of a consonant with no vowel at all (usually word-final), type <code>_</code> right after it: <code>sat</code> → सत, but <code>sat_</code> → सत्</p>
+      </div>
+      <div>
+        <b>Sentence-ending punctuation</b>
+        <p class="guide-example">A single <code>.</code> becomes <code>।</code> (purnabiram). Type three dots for an ellipsis and they stay <code>...</code>. A period right after a digit is treated as a decimal point instead, so <code>2.5</code> → <code>२.५</code>.</p>
+      </div>
+      <div>
+        <b>ञ (nya)</b>
+        <p class="guide-example">Standalone <code>yn</code> gives ञ directly: <code>yoynjan</code> → योञ्जन, <code>vyaynjan</code> → व्यञ्जन. (Different from <code>jn</code> → ज्ञ, which is the reverse-order conjunct used in ज्ञान.)</p>
+      </div>
+      <div>
+        <b>Keep a word (or phrase) in English</b>
+        <p class="guide-example">Wrap it in curly braces to skip conversion entirely: <code>{USB-C}</code>, <code>{CEO}</code>, <code>{Sundar Pichai}</code>, <code>{www.example.com}</code>.</p>
+      </div>
+      <div>
+        <b>Examples</b>
+        <p class="guide-example"><code>hamlaai maayaa cha</code> → हामीलाई माया छ</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="tricky-strip">
+    <div class="tricky-label">Tricky words: tap the idea, type the roman</div>
+    <div class="tricky-chips">
+      <span class="tricky-chip"><span class="dev">ऋषि</span><span class="rom">rishi</span></span>
+      <span class="tricky-chip"><span class="dev">ऋतु</span><span class="rom">Ritu</span></span>
+      <span class="tricky-chip"><span class="dev">कृष्ण</span><span class="rom">krishna</span></span>
+      <span class="tricky-chip"><span class="dev">कृपया</span><span class="rom">kripaya</span></span>
+      <span class="tricky-chip"><span class="dev">विद्यालय</span><span class="rom">vidyaalaya</span></span>
+      <span class="tricky-chip"><span class="dev">शिक्षा</span><span class="rom">shikshaa</span></span>
+      <span class="tricky-chip"><span class="dev">गणेश</span><span class="rom">gaNesh</span></span>
+      <span class="tricky-chip"><span class="dev">गनेश / गनेस</span><span class="rom">ganesh / ganes</span></span>
+      <span class="tricky-chip"><span class="dev">लक्ष्मी</span><span class="rom">lakshmi</span></span>
+      <span class="tricky-chip"><span class="dev">टोपी</span><span class="rom">Topii</span></span>
+      <span class="tricky-chip"><span class="dev">संसार</span><span class="rom">s*saar</span></span>
+      <span class="tricky-chip"><span class="dev">धन्यवाद</span><span class="rom">dhanyavaad</span></span>
+      <span class="tricky-chip"><span class="dev">षट्कोण</span><span class="rom">SaTkoN</span></span>
+      <span class="tricky-chip"><span class="dev">ताण्डव</span><span class="rom">taaNDava</span></span>
+      <span class="tricky-chip"><span class="dev">नङ</span><span class="rom">nang</span></span>
+      <span class="tricky-chip"><span class="dev">नाङ्गो</span><span class="rom">naanggo</span></span>
+      <span class="tricky-chip"><span class="dev">ऐन</span><span class="rom">ain</span></span>
+      <span class="tricky-chip"><span class="dev">पटाक्षेप</span><span class="rom">paTaakshep</span></span>
+      <span class="tricky-chip"><span class="dev">क्षेप्यास्त्र</span><span class="rom">kshepyaastra</span></span>
+      <span class="tricky-chip"><span class="dev">अंशबण्डा</span><span class="rom">a*shabaNDaa</span></span>
+      <span class="tricky-chip"><span class="dev">व्यञ्जन</span><span class="rom">vyaynjan</span></span>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active">Phonetic</div>
+    <div class="tab disabled">Preeti <span class="pill">Coming soon</span></div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="page">
+      <textarea id="editor" placeholder="timro kalam yahaa chalcha... (type here, words convert as you go)" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off"></textarea>
+      <div class="page-footer">
+        <div class="stat-group">
+          <span class="stat"><b id="wordCount">0</b> words</span>
+          <span class="stat"><b id="charCount">0</b> characters</span>
+          <span class="stat">~<b id="narrTime">0 sec</b> to narrate</span>
+        </div>
+        <span id="statusNote">Draft live in this tab</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="draft-note">This draft stays in your browser tab only. Refreshing clears it, so download or copy before you close the tab.</div>
+    <div class="actions">
+      <button class="btn" onclick="clearEditor()">Clear</button>
+      <button class="btn" onclick="downloadText()">Download .txt</button>
+      <select id="azureVoice" class="btn" style="cursor:pointer;" title="Choose Azure Nepali Voice">
+        <option value="ne-NP-HemkalaNeural">झुमा (F)</option>
+        <option value="ne-NP-SagarNeural">रिकुटे (M)</option>
+      </select>
+      <button class="btn" onclick="speakWithAzure()" id="azureBtn" title="Play using Azure Speech">🎙 Listen</button>
+      <button class="btn" onclick="downloadAzureAudio()" id="downloadAudioBtn">⬇ Download audio</button>
+      <button class="btn primary" onclick="copyEditor()" id="copyBtn">Copy text</button>
+    </div>
+  </div>
+  <section class="about-seo" style="margin-top:32px;padding-top:24px;border-top:1px solid #26382C;font-size:13.5px;color:var(--muted);line-height:1.7;">
+    <h2 style="font-family:'Fraunces',serif;font-size:16px;color:var(--cream);font-weight:600;margin-bottom:10px;">About this Nepali Unicode typing tool</h2>
+    <p style="margin-bottom:10px;">लेखन Studio is a free online Nepali Unicode typing and converter tool built for writers, bloggers, and content creators. Type Nepali phonetically using Roman/English letters, and it converts automatically to clean Devanagari Unicode text. No separate software or Preeti font conversion needed. It also includes Nepali text-to-speech narration, so you can listen to what you've written.</p>
+
+    <h3 style="font-size:13.5px;color:var(--cream);font-weight:600;margin:14px 0 4px;">How do I type Nepali online without a Nepali keyboard?</h3>
+    <p style="margin-bottom:10px;">You don't need a Nepali keyboard installed on your computer or phone. Just start typing a word phonetically in Roman letters (e.g. "namaste") in the box above, and it converts to Devanagari (नमस्ते) the moment you hit space or punctuation. See the Typing Guide button above for the full set of conventions, including tricky sounds like ऋ, ष, and ञ.</p>
+
+    <h3 style="font-size:13.5px;color:var(--cream);font-weight:600;margin:14px 0 4px;">Is this a Preeti to Unicode converter?</h3>
+    <p style="margin-bottom:10px;">Not currently. लेखन Studio converts phonetic Roman typing (like "namaste") directly to Unicode Devanagari. A Preeti font converter mode is planned but not yet available.</p>
+
+    <h3 style="font-size:13.5px;color:var(--cream);font-weight:600;margin:14px 0 4px;">Does this work as a Nepali Unicode font converter?</h3>
+    <p style="margin-bottom:10px;">लेखन Studio outputs standard Unicode Devanagari text, which displays correctly everywhere, including Facebook, WhatsApp, Word, and websites, without needing any special Nepali font installed on the reader's device.</p>
+
+    <h3 style="font-size:13.5px;color:var(--cream);font-weight:600;margin:14px 0 4px;">Can I convert Nepali text to speech (audio)?</h3>
+    <p style="margin-bottom:10px;">Yes. लेखन Studio includes Nepali text-to-speech narration with both male and female voice options. Type or write your Nepali text, click Listen to hear it read aloud, and download the audio if you want to keep it.</p>
+
+    <h3 style="font-size:13.5px;color:var(--cream);font-weight:600;margin:14px 0 4px;">Is this Nepali Unicode converter free?</h3>
+    <p>Yes, लेखन Studio is completely free to use, with no sign-up required.</p>
+  </section>
+
+
+<footer>
+  <div class="footer-brand">
+    <span>developed by</span>
+    <img src="/logo.png" alt="Baskota Academy" class="footer-logo">
+  </div>
+</footer>
+
+<script>
+/* ---------------- Transliteration engine ---------------- */
+
+const VIRAMA = '\u094D'; // ्
+const ANUSVARA = '\u0902'; // ं
+const CHANDRABINDU = '\u0901'; // ँ
+const VISARGA = '\u0903'; // ः
+const DIGITS = {'0':'०','1':'१','2':'२','3':'३','4':'४','5':'५','6':'६','7':'७','8':'८','9':'९'};
+
+// consonants: token -> base char (implicit 'a')
+const CONSONANTS = {
+  // 3-char
+  chh: 'छ',
+  // 2-char
+  kh:'ख', gh:'घ', ch:'च', jh:'झ', Th:'ठ', Dh:'ढ', th:'थ', dh:'ध',
+  ph:'फ', bh:'भ', sh:'श', ksh:'क्ष', jn:'ज्ञ', gyn:'ज्ञ', ng:'ङ', yn:'ञ',
+  // 1-char
+  k:'क', g:'ग', T:'ट', D:'ड', N:'ण', t:'त', d:'द', n:'न',
+  p:'प', f:'फ', b:'ब', m:'म', y:'य', r:'र', l:'ल', v:'व', w:'व',
+  S:'ष', Sh:'ष', s:'स', h:'ह', j:'ज', x: 'क्ष', z: 'ज',
+  // Capitalized forms of PLAIN consonants (case carries no meaning for these,
+  // so accept them for free -- someone capitalizing a name shouldn't break
+  // output). T/D/N/S/R (and Th/Dh/Sh above) are excluded on purpose: their
+  // case IS meaningful (retroflex vs dental, vocalic-r vs r).
+  Kh:'ख', Gh:'घ', Ch:'च', Chh:'छ', Jh:'झ', Ph:'फ', Bh:'भ', Ksh:'क्ष', Jn:'ज्ञ', Gyn:'ज्ञ', Ng:'ङ', Yn:'ञ',
+  K:'क', G:'ग', P:'प', F:'फ', B:'ब', Y:'य', L:'ल', V:'व', W:'व',
+  J:'ज', X:'क्ष', Z:'ज'
+};
+
+// vowels: token -> { indep: independent form, matra: dependent sign (''=inherent) }
+const VOWELS = {
+  aa:{indep:'आ',matra:'ा'}, ee:{indep:'ई',matra:'ी'}, ii:{indep:'ई',matra:'ी'},
+  uu:{indep:'ऊ',matra:'ू'}, oo:{indep:'ऊ',matra:'ू'},
+  ai:{indep:'ऐ',matra:'ै'}, au:{indep:'औ',matra:'ौ'}, ou:{indep:'औ',matra:'ौ'},
+  a:{indep:'अ',matra:''}, i:{indep:'इ',matra:'ि'}, u:{indep:'उ',matra:'ु'},
+  e:{indep:'ए',matra:'े'}, o:{indep:'ओ',matra:'ो'},
+  R:{indep:'ऋ',matra:'ृ'}, Ri:{indep:'ऋ',matra:'ृ'}, RI:{indep:'ऋ',matra:'ृ'},
+  // Capitalized forms of plain vowels -- covers both ALL-CAPS and the more
+  // common "just capitalize the first letter of a name" habit (Aakash, Ii...).
+  A:{indep:'अ',matra:''}, I:{indep:'इ',matra:'ि'}, U:{indep:'उ',matra:'ु'},
+  E:{indep:'ए',matra:'े'}, O:{indep:'ओ',matra:'ो'},
+  AA:{indep:'आ',matra:'ा'}, Aa:{indep:'आ',matra:'ा'},
+  II:{indep:'ई',matra:'ी'}, Ii:{indep:'ई',matra:'ी'},
+  EE:{indep:'ई',matra:'ी'}, Ee:{indep:'ई',matra:'ी'},
+  UU:{indep:'ऊ',matra:'ू'}, Uu:{indep:'ऊ',matra:'ू'},
+  OO:{indep:'ऊ',matra:'ू'}, Oo:{indep:'ऊ',matra:'ू'},
+  AI:{indep:'ऐ',matra:'ै'}, Ai:{indep:'ऐ',matra:'ै'},
+  AU:{indep:'औ',matra:'ौ'}, Au:{indep:'औ',matra:'ौ'},
+  OU:{indep:'औ',matra:'ौ'}, Ou:{indep:'औ',matra:'ौ'}
+};
+
+// multi-char keys that must be checked before shorter ones, longest first
+const CONS_KEYS = Object.keys(CONSONANTS).sort((a,b)=>b.length-a.length);
+const VOWEL_KEYS = Object.keys(VOWELS).sort((a,b)=>b.length-a.length);
+
+function matchAt(str, i, keys, dict){
+  for(const k of keys){
+    if(str.startsWith(k, i)) return {key:k, val:dict[k], len:k.length};
+  }
+  return null;
+}
+
+// A small curated list of common words/names where the correct Devanagari
+// spelling can't be derived from casual roman spelling alone (rishi's
+// vocalic-r, ganesh's retroflex Na, etc). Checked before the phonetic
+// engine runs -- case-insensitive. This is a patch, not a dictionary
+// system: add to it as real ambiguous words show up in use.
+const OVERRIDES = {
+  rishi:'ऋषि', rushi:'ऋषि', rishabh:'ऋषभ', rishav:'ऋषभ',
+  krishna:'कृष्ण', krishn:'कृष्ण', krishnaa:'कृष्णा',
+  drishti:'दृष्टि', vrishti:'वृष्टि', vishnu:'विष्णु',
+  lakshmi:'लक्ष्मी',
+  // kripaya has no competing real word the way rishi/ganesh do, so it's
+  // safe to just make the plain, natural spelling correct.
+  kripaya:'कृपया', kripayaa:'कृपया', kripya:'कृपया',
+  // ग्यान/ग्यानि are not accepted alternate spellings (unlike Ganesh's real
+  // variants) -- जान/ज्ञानी are the actual words, so the natural "gy..."
+  // spelling should just resolve to the correct form, short-i included.
+  gyaan:'ज्ञान', gyan:'ज्ञान',
+  gyaani:'ज्ञानी', gyani:'ज्ञानी', gyaanii:'ज्ञानी',
+  // Same reasoning as kripaya -- these have no competing common word using
+  // the "kri"/"mri" spelling literally, so the natural roman spelling can
+  // just resolve straight to the correct vocalic-r (कृ/मृ) form.
+  vikriti:'विकृति', prakriti:'प्रकृति', mrityu:'मृत्यु', mrutyu:'मृत्यु',
+  // Same situation as gyaan/gyaani -- ग्य isn't a real alternate spelling
+  // for these two, ज्ञ is simply correct.
+  vigyapti:'विज्ञप्ति', gyanendra:'ज्ञानेन्द्र',
+  bigyaan:'विज्ञान', vigyaan:'विज्ञान', bigyan:'विज्ञान', vigyan:'विज्ञान',
+  // Sanskrit-origin words with vocalic-r (बृ). Plain "bri" stays ब्रि for
+  // words like Britain, so these must be listed explicitly.
+  brihaspati:'बृहस्पति',
+  brihattar:'बृहत्तर',
+  brihat:'बृहत्', brihad:'बृहद्'
+};
+
+function convertWord(word){
+  const _lower = word.toLowerCase();
+  if(Object.prototype.hasOwnProperty.call(OVERRIDES, _lower)) return OVERRIDES[_lower];
+
+  let out = '';
+  let i = 0;
+  let lastWasConsonant = false;
+  let atStart = true; // true until first sound emitted
+  const n = word.length;
+
+  while(i < n){
+    const ch = word[i];
+
+    // English digits -> Devanagari digits (0->०, 1->१, etc).
+    if(DIGITS[ch]){ out += DIGITS[ch]; lastWasConsonant=false; atStart=false; i+=1; continue; }
+
+    // '*' / '**' shortcuts for anusvara / chandrabindu -- easier to reach
+    // than remembering capital M or ~, and never collides with a letter.
+    if(word.startsWith('**', i)){ out += CHANDRABINDU; lastWasConsonant=false; atStart=false; i+=2; continue; }
+    if(ch === '*'){ out += ANUSVARA; lastWasConsonant=false; atStart=false; i+=1; continue; }
+
+    // explicit halant / word-break marker
+    if(ch === '_'){
+      if(lastWasConsonant){ out += VIRAMA; }
+      lastWasConsonant = false;
+      atStart = false;
+      i += 1;
+      continue;
+    }
+
+    // anusvara / visarga only make sense mid-word (never at absolute word-start,
+    // since they always modify a preceding sound) -- at word-start, M/H are
+    // just the ordinary consonants म/ह instead
+    if(atStart && ch === 'M'){
+      if(lastWasConsonant){ out += VIRAMA; }
+      out += 'म'; lastWasConsonant = true; atStart = false; i += 1; continue;
+    }
+    if(atStart && ch === 'H'){
+      if(lastWasConsonant){ out += VIRAMA; }
+      out += 'ह'; lastWasConsonant = true; atStart = false; i += 1; continue;
+    }
+    if(!atStart && ch === 'M'){ out += ANUSVARA; lastWasConsonant = false; i+=1; continue; }
+    if(!atStart && ch === 'H'){ out += VISARGA; lastWasConsonant = false; i+=1; continue; }
+    if(ch === '~'){ out += CHANDRABINDU; lastWasConsonant = false; atStart=false; i+=1; continue; }
+
+    // try consonant (longest match)
+    const cmatch = matchAt(word, i, CONS_KEYS, CONSONANTS);
+    const vmatch = matchAt(word, i, VOWEL_KEYS, VOWELS);
+
+    // prefer whichever matches (consonants and vowels never overlap in key-space
+    // except case-sensitive R which is vowel-only), so just check both, consonant first
+    if(cmatch){
+      if(lastWasConsonant){ out += VIRAMA; }
+      out += cmatch.val;
+      lastWasConsonant = true;
+      atStart = false;
+      i += cmatch.len;
+      continue;
+    }
+
+    if(vmatch){
+      if(lastWasConsonant){
+        out += vmatch.val.matra; // '' for inherent a
+      } else {
+        out += vmatch.val.indep;
+      }
+      lastWasConsonant = false;
+      atStart = false;
+      i += vmatch.len;
+      continue;
+    }
+
+    // digits/punctuation/unknown char: pass through
+    out += ch;
+    lastWasConsonant = false;
+    atStart = false;
+    i += 1;
+  }
+  return out;
+}
+
+/* ---------------- Editor wiring (word-boundary conversion) ---------------- */
+const editor = document.getElementById('editor');
+const BOUNDARY = /[\s.,!?;:"'()\[\]\n।\/\-]/;
+
+// Convert only the TRAILING run of roman letters within a word segment,
+// leaving any Devanagari that already precedes it untouched. This is what
+// makes "backspace into an already-converted word, then keep typing" work:
+// that segment is now a mix of Devanagari + fresh roman, not pure roman,
+// so we can't require the whole thing to be ASCII like before.
+//
+// Also handles {curly brace} escapes: text wrapped in {} is left exactly
+// as typed (braces stripped), never run through phonetic conversion. For
+// genuine English words, acronyms, or URLs that shouldn't become Devanagari
+// -- e.g. {USB-C}, {CEO}, {www.example.com}, {Sundar Pichai}. Multi-word
+// spans work too -- findSegmentStart() (below) treats the whole {...} span,
+// spaces included, as one atomic unit rather than breaking on the space.
+function convertSegment(rawSegment){
+  const braceMatch = rawSegment.match(/^(.*)\{([^{}]*)\}$/);
+  if(braceMatch){
+    const [, prefix, literal] = braceMatch;
+    const convertedPrefix = prefix ? (convertSegment(prefix) ?? prefix) : '';
+    return convertedPrefix + literal;
+  }
+  const m = rawSegment.match(/[A-Za-z0-9_~*]+$/);
+  if(!m) return null;
+  const romanPart = m[0];
+  const prefix = rawSegment.slice(0, rawSegment.length - romanPart.length);
+  return prefix + convertWord(romanPart);
+}
+
+// Finds where the current segment begins, scanning backward. Normally stops
+// at the first boundary character (space, punctuation) -- but if a '}' is
+// found, jumps back over the WHOLE {...} span (including any spaces inside
+// it) to its matching '{', treating the entire bracketed span as one atomic
+// unit. This is what lets {Sundar Pichai} work as a single escape instead
+// of breaking on the space inside it.
+function findSegmentStart(val, endPos){
+  let i = endPos;
+  while(i > 0){
+    const c = val[i-1];
+    if(c === '}'){
+      let depth = 1, j = i - 1;
+      while(j > 0 && depth > 0){
+        j--;
+        if(val[j] === '}') depth++;
+        else if(val[j] === '{') depth--;
+      }
+      i = j;
+      continue;
+    }
+    if(BOUNDARY.test(c)) break;
+    i--;
+  }
+  return i;
+}
+
+// True if there's a '{' before position `uptoPos` with no matching '}' yet
+// -- meaning we're still in the middle of typing an escape, so any space or
+// punctuation typed right now should just sit there literally rather than
+// triggering conversion.
+function insideUnclosedBrace(val, uptoPos){
+  let depth = 0;
+  for(let k = 0; k < uptoPos; k++){
+    if(val[k] === '{') depth++;
+    else if(val[k] === '}') depth = Math.max(0, depth - 1);
+  }
+  return depth > 0;
+}
+
+editor.addEventListener('input', (e) => {
+  const val = editor.value;
+  const pos = editor.selectionStart;
+  if(pos > 0 && BOUNDARY.test(val[pos-1])){
+    if(insideUnclosedBrace(val, pos - 1)){ updateStats(); return; }
+
+    let wStart = findSegmentStart(val, pos - 1);
+    const rawSegment = val.slice(wStart, pos-1);
+    const converted = rawSegment ? convertSegment(rawSegment) : null;
+    const body = converted !== null ? converted : rawSegment;
+    let before = val.slice(0, wStart);
+    let boundaryChar = val[pos-1];
+    const after = val.slice(pos);
+
+    let dandaReverted = false;
+    if(boundaryChar === '.'){
+      // A '.' right after a digit is a decimal point, not a sentence end --
+      // check the digit BEFORE going anywhere near the danda logic, since
+      // that logic only looks at `before` (everything before this segment),
+      // not `body` (the segment itself, which is where the digit actually is).
+      const lastBodyChar = body[body.length - 1];
+      const isDecimalPoint = lastBodyChar && /[0-9०-९]/.test(lastBodyChar);
+
+      if(isDecimalPoint){
+        boundaryChar = '.';
+      } else {
+        // Single '.' becomes purnabiram (।). But '...' (ellipsis) should stay
+        // literal -- if the char right before this one is a danda we just
+        // inserted, or already a literal dot, undo/skip so it reads as dots.
+        const prevChar = before[before.length - 1];
+        if(prevChar === '।'){
+          before = before.slice(0, -1) + '.';
+          boundaryChar = '.';
+          dandaReverted = true;
+        } else if(prevChar === '.'){
+          boundaryChar = '.';
+        } else {
+          boundaryChar = '।';
+        }
+      }
+    }
+
+    if(body === '' && boundaryChar === '।'){
+      // Nothing new was typed since the last boundary (e.g. a stray space
+      // sat before this '.') -- attach the danda straight to the last word
+      // instead of leaving it floating after whitespace as its own token.
+      before = before.replace(/[ \t]+$/, '');
+    }
+
+    if(converted !== null || boundaryChar === '।' || dandaReverted){
+      editor.value = before + body + boundaryChar + after;
+      const newPos = before.length + body.length + 1;
+      editor.setSelectionRange(newPos, newPos);
+    }
+  }
+  updateStats();
+});
+function convertTrailingWord(){
+  const val = editor.value;
+  const pos = editor.selectionStart;
+  if(insideUnclosedBrace(val, pos)){ updateStats(); return; }
+  let wStart = findSegmentStart(val, pos);
+  const rawSegment = val.slice(wStart, pos);
+  const converted = rawSegment ? convertSegment(rawSegment) : null;
+  if(converted !== null){
+    editor.value = val.slice(0, wStart) + converted + val.slice(pos);
+    const newPos = wStart + converted.length;
+    editor.setSelectionRange(newPos, newPos);
+  }
+  updateStats();
+}
+editor.addEventListener('blur', convertTrailingWord);
+
+function updateStats(){
+  const text = editor.value.trim();
+  const words = text === '' ? [] : text.split(/\s+/).filter(w => /[^।.,!?;:'"()\[\]_*~]/.test(w));
+  document.getElementById('wordCount').innerText = words.length;
+  document.getElementById('charCount').innerText = editor.value.length;
+  // rough Nepali narration pace ~140 words/min for clear spoken narration
+  const totalSec = Math.round((words.length / 140) * 60);
+  const label = totalSec < 60 ? `${totalSec} sec` : `${Math.floor(totalSec/60)} min ${totalSec%60} sec`;
+  document.getElementById('narrTime').innerText = words.length ? label : '0 sec';
+}
+
+function clearEditor(){
+  if(editor.value && !confirm('Clear the whole draft?')) return;
+  editor.value = '';
+  updateStats();
+  editor.focus();
+}
+
+function copyEditor(){
+  if(!editor.value) return;
+  navigator.clipboard.writeText(editor.value);
+  const btn = document.getElementById('copyBtn');
+  const original = btn.innerText;
+  btn.innerText = 'Copied ✓';
+  setTimeout(()=>{ btn.innerText = original; }, 1600);
+}
+
+function downloadText(){
+  if(!editor.value) return;
+  const blob = new Blob([editor.value], {type: 'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const stamp = new Date().toISOString().slice(0,16).replace(/[:T]/g,'-');
+  a.href = url;
+  a.download = `lekhan-draft-${stamp}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+/* ---------------- Narration (Azure Speech Service) ---------------- */
+let azureAudio = null;
+let azureBlob = null;
+
+async function speakWithAzure(){
+  const text = editor.value.trim();
+  if(!text) return;
+  
+  const voiceName = document.getElementById('azureVoice').value;
+  const btn = document.getElementById('azureBtn');
+
+  if(azureAudio && !azureAudio.paused){
+    azureAudio.pause();
+    azureAudio.currentTime = 0;
+    btn.innerText = '🎙 Listen';
+    return;
+  }
+
+  btn.innerText = '⏳ Generating...';
+
+  try {
+    const res = await fetch('/api/tts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text, voiceName: voiceName })
+    });
+
+    if(!res.ok) {
+      const errText = await res.text();
+      throw new Error(errText || res.statusText);
+    }
+
+    azureBlob = await res.blob();
+    const url = URL.createObjectURL(azureBlob);
+    azureAudio = new Audio(url);
+    
+    azureAudio.onended = () => { btn.innerText = '🎙 Listen'; };
+    azureAudio.play();
+    btn.innerText = '⏹ Stop';
+  } catch(e) {
+    alert('Azure TTS Error: ' + e.message);
+    btn.innerText = '🎙 Listen';
+  }
+}
+
+function downloadAzureAudio(){
+  if(!azureBlob){
+    alert('Generate audio first by clicking Listen, then you can download it.');
+    return;
+  }
+  const url = URL.createObjectURL(azureBlob);
+  const a = document.createElement('a');
+  const stamp = new Date().toISOString().slice(0,16).replace(/[:T]/g,'-');
+  a.href = url;
+  a.download = `lekhan-azure-narration-${stamp}.wav`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function escapeXml(unsafe) {
+  return unsafe.replace(/[<>&'"]/g, function (c) {
+    switch (c) {
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '&': return '&amp;';
+      case '\'': return '&apos;';
+      case '"': return '&quot;';
+    }
+  });
+}
+
+function applyTheme(theme){
+  document.body.dataset.theme = theme;
+  document.getElementById('themeToggleBtn').innerText = theme === 'light' ? '☀️' : '🌙';
+}
+
+function toggleTheme(){
+  const current = document.body.dataset.theme === 'light' ? 'light' : 'dark';
+  const next = current === 'light' ? 'dark' : 'light';
+  applyTheme(next);
+  try{ localStorage.setItem('lekhan-theme', next); } catch(e){}
+}
+
+(function initTheme(){
+  let saved = 'dark';
+  try{ saved = localStorage.getItem('lekhan-theme') || 'dark'; } catch(e){}
+  applyTheme(saved);
+})();
+
+function toggleGuide(){
+  document.getElementById('guide').classList.toggle('open');
+  document.getElementById('feedback').classList.remove('open');
+}
+
+function toggleFeedback(){
+  document.getElementById('feedback').classList.toggle('open');
+  document.getElementById('guide').classList.remove('open');
+}
+
+function sendFeedback(){
+  const note = document.getElementById('feedbackText').value.trim();
+  if(!note){ document.getElementById('feedbackText').focus(); return; }
+  const includeSnippet = document.getElementById('includeSnippet').checked;
+  const snippet = includeSnippet ? editor.value.slice(-300) : '';
+
+  // --- Ships today with no setup: opens the reporter's email client. ---
+  // To upgrade to in-app submission later (no email client needed, more
+  // reports as a result): sign up at formspree.io, create a form, then
+  // replace this block with a fetch() POST to your form's endpoint URL
+  // using the same `note` and `snippet` values.
+  const subject = encodeURIComponent('लेखन Studio: issue report');
+  const body = encodeURIComponent(
+    note + (snippet ? `\n\n--- what I was writing ---\n${snippet}` : '')
+  );
+  // TODO: replace with your real email before deploying
+  window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
+
+  document.getElementById('feedbackText').value = '';
+  document.getElementById('feedback').classList.remove('open');
+}
+
+updateStats();
+</script>
+</body>
+</html>
