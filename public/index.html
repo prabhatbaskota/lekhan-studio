@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="5yKIKxLNgS1HFTyDgi25Iqyu2t6boJ8SJOrzkVTVra8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free Nepali Unicode typing and converter. Type phonetically in Roman letters and get clean Devanagari instantly, plus Nepali text-to-speech narration.">
-<meta name="keywords" content="nepali typing, unicode nepali converter, nepali unicode typing, romanized nepali to unicode, type nepali online, nepali keyboard online, nepali text to speech, nepali tts">
+<meta name="description" content="Free Nepali Unicode typing and converter. Type phonetically in Roman letters and get clean Devanagari instantly.">
+<meta name="keywords" content="nepali typing, unicode nepali converter, nepali unicode typing, romanized nepali to unicode, type nepali online, nepali keyboard online">
 <title>Nepali Unicode Typing & Converter Online | लेखन Studio</title>
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="लेखन Studio | Nepali Unicode Typing & Converter">
-<meta property="og:description" content="Free online Nepali Unicode typing tool with text-to-speech narration. Type phonetically in Roman letters and get clean Devanagari Unicode instantly.">
-<meta property="og:image" content="https://https://lekhanstudio.vercel.app//logo.png">
-<meta property="og:url" content="https://https://lekhanstudio.vercel.app//">
+<meta property="og:description" content="Free online Nepali Unicode typing tool. Type phonetically in Roman letters and get clean Devanagari Unicode instantly.">
+<meta property="og:image" content="https://lekhanstudio.vercel.app/logo.png">
+<meta property="og:url" content="https://lekhanstudio.vercel.app/">
 
 <!-- Structured data -->
 <script type="application/ld+json">
@@ -59,14 +59,6 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "लेखन Studio outputs standard Unicode Devanagari text, which displays correctly everywhere without needing any special Nepali font installed."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I convert Nepali text to speech (audio)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. लेखन Studio includes Nepali text-to-speech narration with both male and female voice options. Type your Nepali text, click Listen to hear it read aloud, and download the audio if you want to keep it."
       }
     },
     {
@@ -154,6 +146,13 @@
     cursor:pointer;transition:.15s;
   }
   .guide-toggle:hover{border-color:var(--gold);color:var(--gold);}
+  /* Link out to Kuralaya (voice tools): same pill shape, accent-colored so it reads as a destination, not a setting */
+  a.guide-toggle{text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+  a.voice-link{color:var(--gold);border-color:var(--gold);}
+  a.voice-link:hover{background:var(--gold);color:var(--ink);}
+  .footer-note{margin-bottom:10px;font-size:12.5px;}
+  .footer-note a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;transition:.15s;}
+  .footer-note a:hover{border-bottom-color:var(--gold);}
 
   main{max-width:920px;margin:18px auto 40px;padding:0 28px;width:100%;flex:1;}
 
@@ -291,6 +290,7 @@
   </div>
   <div class="header-actions">
     <button class="theme-toggle" onclick="toggleTheme()" id="themeToggleBtn" title="Toggle dark/light mode">🌙</button>
+    <a class="guide-toggle voice-link" href="https://www.kuralaya.com" target="_blank" rel="noopener" title="Nepali text to speech &amp; speech to text on Kuralaya">🎙 Voice tools ↗</a>
     <button class="guide-toggle" onclick="toggleGuide()">Typing guide</button>
     <button class="guide-toggle" onclick="toggleFeedback()">Report an issue</button>
   </div>
@@ -403,7 +403,6 @@
         <div class="stat-group">
           <span class="stat"><b id="wordCount">0</b> words</span>
           <span class="stat"><b id="charCount">0</b> characters</span>
-          <span class="stat">~<b id="narrTime">0 sec</b> to narrate</span>
         </div>
         <span id="statusNote">Draft live in this tab</span>
       </div>
@@ -415,18 +414,12 @@
     <div class="actions">
       <button class="btn" onclick="clearEditor()">Clear</button>
       <button class="btn" onclick="downloadText()">Download .txt</button>
-      <select id="azureVoice" class="btn" style="cursor:pointer;" title="Choose Azure Nepali Voice">
-        <option value="ne-NP-HemkalaNeural">झुमा (F)</option>
-        <option value="ne-NP-SagarNeural">रिकुटे (M)</option>
-      </select>
-      <button class="btn" onclick="speakWithAzure()" id="azureBtn" title="Play using Azure Speech">🎙 Listen</button>
-      <button class="btn" onclick="downloadAzureAudio()" id="downloadAudioBtn">⬇ Download audio</button>
       <button class="btn primary" onclick="copyEditor()" id="copyBtn">Copy text</button>
     </div>
   </div>
   <section class="about-seo" style="margin-top:32px;padding-top:24px;border-top:1px solid #26382C;font-size:13.5px;color:var(--muted);line-height:1.7;">
     <h2 style="font-family:'Fraunces',serif;font-size:16px;color:var(--cream);font-weight:600;margin-bottom:10px;">About this Nepali Unicode typing tool</h2>
-    <p style="margin-bottom:10px;">लेखन Studio is a free online Nepali Unicode typing and converter tool built for writers, bloggers, and content creators. Type Nepali phonetically using Roman/English letters, and it converts automatically to clean Devanagari Unicode text. No separate software or Preeti font conversion needed. It also includes Nepali text-to-speech narration, so you can listen to what you've written.</p>
+    <p style="margin-bottom:10px;">लेखन Studio is a free online Nepali Unicode typing and converter tool built for writers, bloggers, and content creators. Type Nepali phonetically using Roman/English letters, and it converts automatically to clean Devanagari Unicode text. No separate software or Preeti font conversion needed.</p>
 
     <h3 style="font-size:13.5px;color:var(--cream);font-weight:600;margin:14px 0 4px;">How do I type Nepali online without a Nepali keyboard?</h3>
     <p style="margin-bottom:10px;">You don't need a Nepali keyboard installed on your computer or phone. Just start typing a word phonetically in Roman letters (e.g. "namaste") in the box above, and it converts to Devanagari (नमस्ते) the moment you hit space or punctuation. See the Typing Guide button above for the full set of conventions, including tricky sounds like ऋ, ष, and ञ.</p>
@@ -437,15 +430,13 @@
     <h3 style="font-size:13.5px;color:var(--cream);font-weight:600;margin:14px 0 4px;">Does this work as a Nepali Unicode font converter?</h3>
     <p style="margin-bottom:10px;">लेखन Studio outputs standard Unicode Devanagari text, which displays correctly everywhere, including Facebook, WhatsApp, Word, and websites, without needing any special Nepali font installed on the reader's device.</p>
 
-    <h3 style="font-size:13.5px;color:var(--cream);font-weight:600;margin:14px 0 4px;">Can I convert Nepali text to speech (audio)?</h3>
-    <p style="margin-bottom:10px;">Yes. लेखन Studio includes Nepali text-to-speech narration with both male and female voice options. Type or write your Nepali text, click Listen to hear it read aloud, and download the audio if you want to keep it.</p>
-
     <h3 style="font-size:13.5px;color:var(--cream);font-weight:600;margin:14px 0 4px;">Is this Nepali Unicode converter free?</h3>
     <p>Yes, लेखन Studio is completely free to use, with no sign-up required.</p>
   </section>
 
 
 <footer>
+  <div class="footer-note">Need Nepali text to speech or speech to text? Try <a href="https://www.kuralaya.com" target="_blank" rel="noopener">Kuralaya</a></div>
   <div class="footer-brand">
     <span>developed by</span>
     <img src="/logo.png" alt="Baskota Academy" class="footer-logo">
@@ -514,11 +505,13 @@ function matchAt(str, i, keys, dict){
   return null;
 }
 
-// A small curated list of common words/names where the correct Devanagari
+// A small curated list of ROOT words/names where the correct Devanagari
 // spelling can't be derived from casual roman spelling alone (rishi's
-// vocalic-r, ganesh's retroflex Na, etc). Checked before the phonetic
-// engine runs -- case-insensitive. This is a patch, not a dictionary
-// system: add to it as real ambiguous words show up in use.
+// vocalic-r, ganesh's retroflex Na, etc). Case-insensitive. You only need to
+// list the root: compounds (rishimuni) and endings (rishiko, prakritiharuko)
+// are handled automatically by convertWord() below. Add to it as real
+// ambiguous words show up in use. Roots shorter than 4 letters are ignored
+// for compound/ending matching (exact whole-word matches still work).
 const OVERRIDES = {
   rishi:'ऋषि', rushi:'ऋषि', rishabh:'ऋषभ', rishav:'ऋषभ',
   krishna:'कृष्ण', krishn:'कृष्ण', krishnaa:'कृष्णा',
@@ -526,7 +519,7 @@ const OVERRIDES = {
   lakshmi:'लक्ष्मी',
   // kripaya has no competing real word the way rishi/ganesh do, so it's
   // safe to just make the plain, natural spelling correct.
-  kripaya:'कृपया', kripayaa:'कृपया', kripya:'कृपया', adhikrit:'अधिकृत',
+  kripaya:'कृपया', kripayaa:'कृपया', kripya:'कृपया', kriti:'कृति', adhikrit:'अधिकृत',
   // ग्यान/ग्यानि are not accepted alternate spellings (unlike Ganesh's real
   // variants) -- जान/ज्ञानी are the actual words, so the natural "gy..."
   // spelling should just resolve to the correct form, short-i included.
@@ -547,10 +540,71 @@ const OVERRIDES = {
   brihat:'बृहत्', brihad:'बृहद्'
 };
 
+// Postpositions / plural that may directly follow a known root
+// (prakriti+ko, gyaan+haruko ...).
+const SUFFIXES = {
+  ko:'को', ka:'का', kaa:'का', ki:'की', kii:'की', ku:'कु', ke:'के',
+  ma:'मा', maa:'मा', le:'ले', lai:'लाई', laai:'लाई',
+  bata:'बाट', baata:'बाट', dekhi:'देखि'
+};
+const OVERRIDE_KEYS = Object.keys(OVERRIDES).filter(k => k.length >= 4).sort((a, b) => b.length - a.length);
+
+// Postposition / plural ending that may directly follow a known root.
+function convertSuffix(rest){
+  let out = '';
+  const pl = rest.match(/^(haruu|haru)/);
+  if(pl){ out += 'हरू'; rest = rest.slice(pl[0].length); }
+  if(rest === '') return out || null;
+  return Object.prototype.hasOwnProperty.call(SUFFIXES, rest) ? out + SUFFIXES[rest] : null;
+}
+
+// Phonetic conversion of a leftover chunk. If it directly follows a known root
+// that ends in a consonant (inherent a), a leading vowel must become a matra,
+// not a fresh independent vowel.
+function convertChunk(chunk, prev){
+  if(!chunk) return '';
+  if(prev && /^[aeiouAEIOU]/.test(chunk) && /[\u0915-\u0939]$/.test(prev)){
+    return convertPhonetic('k' + chunk).slice(1);
+  }
+  return convertPhonetic(chunk);
+}
+
+// Main entry point for one roman word.
+// 1. A whole-word match in OVERRIDES wins.
+// 2. Otherwise known roots are recognised wherever a new syllable starts: at
+//    the start of the word, right after another known root, or right after a
+//    vowel. A known ending (ko/ka/ki/ke/ma/le/lai/..., with or without haru)
+//    directly after a root is attached automatically.
+// 3. Everything else goes through the plain phonetic rules, unchanged.
 function convertWord(word){
   const _lower = word.toLowerCase();
   if(Object.prototype.hasOwnProperty.call(OVERRIDES, _lower)) return OVERRIDES[_lower];
 
+  let out = '', buf = '', i = 0, afterKnown = false, prevPiece = '';
+  const flush = () => {
+    if(buf){ const c = convertChunk(buf, prevPiece); out += c; prevPiece = c; buf = ''; }
+  };
+
+  while(i < word.length){
+    const canStart = i === 0 || afterKnown || /[aeiou]/.test(_lower[i - 1]);
+    if(canStart){
+      const key = OVERRIDE_KEYS.find(k => _lower.startsWith(k, i));
+      if(key){
+        flush();
+        out += OVERRIDES[key]; prevPiece = OVERRIDES[key]; i += key.length; afterKnown = true;
+        const tail = convertSuffix(_lower.slice(i));
+        if(tail !== null){ out += tail; return out; }
+        continue;
+      }
+    }
+    buf += word[i]; i++; afterKnown = false;
+  }
+  flush();
+  return out;
+}
+
+// The plain phonetic engine (no override / root lookup).
+function convertPhonetic(word){
   let out = '';
   let i = 0;
   let lastWasConsonant = false;
@@ -775,10 +829,6 @@ function updateStats(){
   const words = text === '' ? [] : text.split(/\s+/).filter(w => /[^।.,!?;:'"()\[\]_*~]/.test(w));
   document.getElementById('wordCount').innerText = words.length;
   document.getElementById('charCount').innerText = editor.value.length;
-  // rough Nepali narration pace ~140 words/min for clear spoken narration
-  const totalSec = Math.round((words.length / 140) * 60);
-  const label = totalSec < 60 ? `${totalSec} sec` : `${Math.floor(totalSec/60)} min ${totalSec%60} sec`;
-  document.getElementById('narrTime').innerText = words.length ? label : '0 sec';
 }
 
 function clearEditor(){
@@ -809,79 +859,6 @@ function downloadText(){
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-}
-
-/* ---------------- Narration (Azure Speech Service) ---------------- */
-let azureAudio = null;
-let azureBlob = null;
-
-async function speakWithAzure(){
-  const text = editor.value.trim();
-  if(!text) return;
-  
-  const voiceName = document.getElementById('azureVoice').value;
-  const btn = document.getElementById('azureBtn');
-
-  if(azureAudio && !azureAudio.paused){
-    azureAudio.pause();
-    azureAudio.currentTime = 0;
-    btn.innerText = '🎙 Listen';
-    return;
-  }
-
-  btn.innerText = '⏳ Generating...';
-
-  try {
-    const res = await fetch('/api/tts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: text, voiceName: voiceName })
-    });
-
-    if(!res.ok) {
-      const errText = await res.text();
-      throw new Error(errText || res.statusText);
-    }
-
-    azureBlob = await res.blob();
-    const url = URL.createObjectURL(azureBlob);
-    azureAudio = new Audio(url);
-    
-    azureAudio.onended = () => { btn.innerText = '🎙 Listen'; };
-    azureAudio.play();
-    btn.innerText = '⏹ Stop';
-  } catch(e) {
-    alert('Azure TTS Error: ' + e.message);
-    btn.innerText = '🎙 Listen';
-  }
-}
-
-function downloadAzureAudio(){
-  if(!azureBlob){
-    alert('Generate audio first by clicking Listen, then you can download it.');
-    return;
-  }
-  const url = URL.createObjectURL(azureBlob);
-  const a = document.createElement('a');
-  const stamp = new Date().toISOString().slice(0,16).replace(/[:T]/g,'-');
-  a.href = url;
-  a.download = `lekhan-azure-narration-${stamp}.wav`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-function escapeXml(unsafe) {
-  return unsafe.replace(/[<>&'"]/g, function (c) {
-    switch (c) {
-      case '<': return '&lt;';
-      case '>': return '&gt;';
-      case '&': return '&amp;';
-      case '\'': return '&apos;';
-      case '"': return '&quot;';
-    }
-  });
 }
 
 function applyTheme(theme){
